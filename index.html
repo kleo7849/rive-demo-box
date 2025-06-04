@@ -1,28 +1,14 @@
+<rive-player
+  id="riveBox"
+  src="box-click.riv"
+  stateMachines="box_state"
+  autoplay
+  style="width: 1000px; height: 1000px;"
+></rive-player>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Rive Demo</title>
-  <script src="https://unpkg.com/@rive-app/web-component@2.0.0-beta.18/rive.js"></script>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f0f0f0;
-    }
-  </style>
-</head>
-<body>
-
-  <rive-player
-    src="box-click.riv"
-    autoplay
-    loop
-    style="width: 300px; height: 300px;"
-  ></rive-player>
-
-</body>
-</html>
+<script>
+  const player = document.getElementById('riveBox');
+  player.addEventListener('click', () => {
+    player.fireState('Trigger 1'); // 替換為你動畫中使用的 Trigger 名稱
+  });
+</script>
