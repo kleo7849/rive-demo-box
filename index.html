@@ -19,30 +19,28 @@
 <body>
 
   <rive-player
-    id="riveBox"
-    src="box-click.riv"
-    stateMachines="box_state"
-    autoplay
-    style="width: 500px; height: 500px;"
-  ></rive-player>
+  id="riveBox"
+  src="box-click.riv"
+  stateMachines="box_state"
+  autoplay
+  style="width: 500px; height: 500px;"
+></rive-player>
 
-  <script>
-    const player = document.getElementById('riveBox');
+<script>
+  const player = document.getElementById('riveBox');
 
-    player.addEventListener('ready', () => {
-      const inputs = player.stateMachineInputs('box_state');
-      const trigger = inputs.find(input => input.name === 'Trigger 1');
+  // 確保元件載入完成後再綁定事件
+  player.addEventListener('ready', () => {
+    const inputs = player.stateMachineInputs('box_state');
 
-      player.addEventListener('click', () => {
-        if (trigger) {
-          trigger.fire();
-          console.log('Trigger fired!');
-        } else {
-          console.warn('找不到名為 "Trigger 1" 的 trigger。');
-        }
-      });
+    // 找到 Trigger 名為 "Trigger 1"
+    const trigger = inputs.find(input => input.name === 'Trigger 1');
+
+    // 綁定點擊事件
+    player.addEventListener('click', () => {
+      if (trigger) {
+        trigger.fire(); // 正確觸發方式
+      }
     });
-  </script>
-
-</body>
-</html>
+  });
+</script>
